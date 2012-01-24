@@ -46,6 +46,7 @@
 #include "cvs-exp.h"
 #include "custom.h"
 #include "apache.h"
+#include "juju.h"
 #include "svn.h"
 
 #include "core/vbo.h"

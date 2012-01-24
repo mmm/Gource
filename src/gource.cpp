@@ -227,6 +227,12 @@ RCommitLog* Gource::determineFormat(const std::string& logfile) {
             delete clog;
         }
 
+        if(gGourceSettings.log_format == "juju") {
+            clog = new JujuStatusLog(logfile);
+            if(clog->checkFormat()) return clog;
+            delete clog;
+        }
+
         if(gGourceSettings.log_format == "svn") {
             clog = new SVNCommitLog(logfile);
             if(clog->checkFormat()) return clog;
@@ -301,6 +307,13 @@ RCommitLog* Gource::determineFormat(const std::string& logfile) {
     //apache
     debugLog("trying apache combined...\n");
     clog = new ApacheCombinedLog(logfile);
+    if(clog->checkFormat()) return clog;
+
+    delete clog;
+
+    //juju
+    debugLog("trying juju status...\n");
+    clog = new JujuStatusLog(logfile);
     if(clog->checkFormat()) return clog;
 
     delete clog;

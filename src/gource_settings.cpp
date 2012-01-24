@@ -590,7 +590,8 @@ void GourceSettings::importGourceSettings(ConfFile& conffile, ConfSection* gourc
            && log_format != "custom"
            && log_format != "hg"
            && log_format != "bzr"
-           && log_format != "apache") {
+           && log_format != "apache"
+           && log_format != "juju") {
 
             conffile.invalidValueException(entry);
         }
